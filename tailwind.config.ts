@@ -57,6 +57,18 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        rarity: {
+          qr: "hsl(var(--rarity-qr))",
+          hr: "hsl(var(--rarity-hr))",
+          sr: "hsl(var(--rarity-sr))",
+          ssr: "hsl(var(--rarity-ssr))",
+          gr: "hsl(var(--rarity-gr))",
+        },
+      },
+      boxShadow: {
+        'glow-primary': '0 0 20px hsl(var(--glow-primary)), 0 0 40px hsl(var(--glow-primary))',
+        'glow-accent': '0 0 20px hsl(var(--glow-accent)), 0 0 40px hsl(var(--glow-accent))',
+        'card-hover': '0 8px 30px rgba(0, 0, 0, 0.4), 0 0 15px hsl(var(--glow-primary))',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +92,15 @@ export default {
             height: "0",
           },
         },
+        shimmer: {
+          "0%": { backgroundPosition: "200% 0" },
+          "100%": { backgroundPosition: "-200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 3s infinite",
       },
     },
   },
