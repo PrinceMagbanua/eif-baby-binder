@@ -94,20 +94,28 @@ export function CollectionCard({ card, onClick }: CollectionCardProps) {
         
         {/* Card content */}
         <div className="relative p-6 flex flex-col items-center gap-4">
-          {/* Placeholder for card image */}
+          {/* Card image */}
           <motion.div 
             className="w-full aspect-[3/4] rounded-lg flex items-center justify-center relative overflow-hidden"
             style={{
-              background: `linear-gradient(135deg, hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.1), hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.3))`,
+              background: card.imageUrl ? 'transparent' : `linear-gradient(135deg, hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.1), hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.3))`,
             }}
             whileHover={{
               boxShadow: `0 0 30px hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.4)`,
             }}
           >
-            <Sparkles 
-              className="w-16 h-16 opacity-30 group-hover:opacity-50 transition-opacity duration-300"
-              style={{ color: `hsl(var(--rarity-${card.rarity.toLowerCase()}))` }}
-            />
+            {card.imageUrl ? (
+              <img 
+                src={card.imageUrl} 
+                alt={card.name}
+                className="w-full h-full object-cover rounded-lg"
+              />
+            ) : (
+              <Sparkles 
+                className="w-16 h-16 opacity-30 group-hover:opacity-50 transition-opacity duration-300"
+                style={{ color: `hsl(var(--rarity-${card.rarity.toLowerCase()}))` }}
+              />
+            )}
             
             {/* Rarity badge */}
             <motion.div 

@@ -30,17 +30,25 @@ export function CardDetailDialog({ card, open, onOpenChange }: CardDetailDialogP
         </DialogHeader>
         
         <div className="space-y-6">
-          {/* Card image placeholder */}
+          {/* Card image */}
           <div 
             className="w-full aspect-[3/4] rounded-lg flex items-center justify-center relative overflow-hidden"
             style={{
-              background: `linear-gradient(135deg, hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.2), hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.4))`,
+              background: card.imageUrl ? 'transparent' : `linear-gradient(135deg, hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.2), hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.4))`,
             }}
           >
-            <Sparkles 
-              className="w-24 h-24 opacity-40"
-              style={{ color: `hsl(var(--rarity-${card.rarity.toLowerCase()}))` }}
-            />
+            {card.imageUrl ? (
+              <img 
+                src={card.imageUrl} 
+                alt={card.name}
+                className="w-full h-full object-cover rounded-lg"
+              />
+            ) : (
+              <Sparkles 
+                className="w-24 h-24 opacity-40"
+                style={{ color: `hsl(var(--rarity-${card.rarity.toLowerCase()}))` }}
+              />
+            )}
           </div>
           
           {/* Card details */}

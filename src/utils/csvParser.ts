@@ -2,7 +2,14 @@ export interface Card {
   rarity: string;
   code: string;
   name: string;
+  imageUrl?: string;
 }
+
+// Import card images
+const cardImages: Record<string, string> = {
+  'SSR-004': new URL('../assets/SSR-004.jpg', import.meta.url).href,
+  'HR-003': new URL('../assets/HR-003.jpg', import.meta.url).href,
+};
 
 export function parseCSV(csvText: string): Card[] {
   const lines = csvText.trim().split('\n');
@@ -10,10 +17,12 @@ export function parseCSV(csvText: string): Card[] {
   
   return lines.slice(1).map(line => {
     const values = line.split(',').map(v => v.trim());
+    const code = values[1];
     return {
       rarity: values[0],
-      code: values[1],
+      code: code,
       name: values[2],
+      imageUrl: cardImages[code],
     };
   });
 }
