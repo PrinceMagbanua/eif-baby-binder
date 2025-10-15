@@ -7,8 +7,8 @@ export interface Card {
 
 // Import card images
 const cardImages: Record<string, string> = {
-  'SSR-004': new URL('../assets/SSR-004.jpg', import.meta.url).href,
-  'HR-003': new URL('../assets/HR-003.jpg', import.meta.url).href,
+  'SSR-004': new URL('../assets/HR-003.jpg', import.meta.url).href,
+  'HR-003': new URL('../assets/SSR-004.jpg', import.meta.url).href,
 };
 
 export function parseCSV(csvText: string): Card[] {

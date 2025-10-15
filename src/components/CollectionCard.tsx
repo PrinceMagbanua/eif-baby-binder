@@ -66,15 +66,15 @@ export function CollectionCard({ card, onClick }: CollectionCardProps) {
           />
         )}
 
-        {/* Hover shine effect */}
+        {/* Hover shine effect - diagonal from upper left */}
         <motion.div
           className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100"
           style={{
-            background: `linear-gradient(90deg, transparent, hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.3), transparent)`,
-            transform: "skewX(-20deg)",
+            background: `linear-gradient(135deg, hsl(var(--rarity-${card.rarity.toLowerCase()}) / 0.5), transparent 50%)`,
           }}
           animate={{
-            x: ["-100%", "200%"],
+            x: ["-100%", "100%"],
+            y: ["-100%", "100%"],
           }}
           transition={{
             duration: 1.5,
